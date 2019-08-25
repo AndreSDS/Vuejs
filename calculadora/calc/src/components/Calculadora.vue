@@ -1,11 +1,11 @@
 <template>
   <div class="calculadora">
-    <div class="display">{{ current || '0' }}</div>
+    <div @click="simbolo" class="display">{{ current || '0' }}</div>
     <div @click="limpa" class="btn">C</div>
     <div @click="sinal" class="btn">+/-</div>
     <div @click="porcent" class="btn">%</div>
 
-    <div @click="dividir" class="btn operator">/</div>
+    <div @click="dividir" class="btn operator">&divide;</div>
 
     <div @click="numeros(7)" class="btn">7</div>
     <div @click="numeros(8)" class="btn">8</div>
@@ -72,7 +72,7 @@ export default {
     },
     dividir(){
       this.operador = (a,b) => a / b;
-      this.setPrimeroNum();
+      this.setPrimeroNum();      
     },
     multi(){
       this.operador = (a,b) => a * b;
@@ -101,7 +101,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .calculadora{
-    width: 400px;
+    max-width: 400px;
     margin: 0 auto;
     font-size: 40px;
     display: grid;
@@ -122,10 +122,19 @@ export default {
   .btn{
     background-color: #f2f2f2;
     border: 1px solid #999;
+    cursor: pointer;
+  }
+
+  .btn:hover{
+    background: #ccc;
   }
 
   .operator{
     background: orange;
     color: #fff;
+  }
+
+  .operator:hover{
+    background: darkorange;
   }
 </style>
